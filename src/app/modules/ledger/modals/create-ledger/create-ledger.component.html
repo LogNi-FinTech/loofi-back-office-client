@@ -1,0 +1,65 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">Add Ledger</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+
+    <form fxFlex="100" fxLayout="column" fxLayoutAlign="center center" [formGroup]="transactionForm">
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input placeholder="name" matInput required formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Ledger Code</mat-label>
+            <input placeholder="Ledger Code" matInput required formControlName="ledgerCode">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select required formControlName="type" name="food">
+                <mat-option value="MEMBER">MEMBER</mat-option>
+                <mat-option value="SYSTEM">SYSTEM</mat-option> 
+              </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Head</mat-label>
+            <mat-select required formControlName="head">
+                <mat-option value="ASSET">ASSET</mat-option>
+                <mat-option value="LIABILITY" >LIABILITY</mat-option>
+                <mat-option value="INCOME" >INCOME</mat-option>
+                <mat-option value="EXPENSE" >EXPENSE</mat-option>
+                <mat-option value="PAYABLE" >PAYABLE</mat-option>
+                <mat-option value="RECEIVABLE" >RECEIVABLE</mat-option>
+                <mat-option value="ACCRUAL" >ACCRUAL</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <div style="margin-bottom: 16px; width: 100%;" fxLayout="row" fxLayoutAlign="space-between center"> 
+            <mat-checkbox class="form-field" formControlName="showAccountsInChart">Show Accounts In Chart</mat-checkbox>
+            <mat-checkbox class="form-field" formControlName="onlyParent">Only Parent</mat-checkbox>
+         </div>
+
+
+        <!-- <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            
+        </mat-form-field>
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+           
+        </mat-form-field> -->
+        <mat-form-field class="form-field" fxFlex="100" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input placeholder="Description" matInput required formControlName="description">
+        </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button mat-dialog-close>Cancel</button>
+    <button [disabled]="!transactionForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
+</div>

@@ -1,0 +1,167 @@
+
+
+
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<div class="container" *ngIf="!isUpdate">
+    <div class="title">TnxType</div>
+    <div class="content">
+      <form >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details"> Name</span>
+           <input type="text" name="name" placeholder=" Name" [(ngModel)] = "tnxType.name">
+          </div>
+          <div class="input-box">
+            <span class="details">Txn Code</span>
+            <input type="text" name="txnCode" placeholder=" Tnx Code" [(ngModel)] = "tnxType.txnCode">
+          </div>
+		 
+          <div class="input-box" *ngIf="dataLedgerReceive && tnxType.fromType!=null && ledgers!=null ">
+            <span class="details">From Type</span>           
+			<select name="fromType" [(ngModel)]="tnxType.fromType.id">
+				<option *ngFor="let ledger of ledgers" value={{ledger.id}}>
+					{{ledger?.name}}
+				</option>
+				
+			</select>
+          </div>
+		  
+		  <div class="input-box" *ngIf= "dataLedgerReceive &&tnxType.toType!=null && ledgers!=null">
+            <span class="details">toType</span>            
+			<select name="toType" [(ngModel)]="tnxType.toType.id">
+				<option *ngFor="let ledger of ledgers" value={{ledger.id}}>
+					{{ledger?.name}}
+				</option>
+				
+			</select>
+          </div>
+		  
+		   <div class="inputfield terms" style="margin-top: 20px;">
+			  <label class="check">
+				<input type="checkbox" name="enable" [checked]="tnxType.enabled" (change)="tnxType.enabled = !tnxType.enabled" style="margin-left:25px; margin-top:5px;">
+			  </label>
+			<p style=" float:left; font-size:20px;" >Enable</p>
+          </div> 
+		  
+		 
+		  <div class="input-box">
+            <span class="details">Description</span>
+             <input type="text" name="description" placeholder=" Description" [(ngModel)] = "tnxType.description" >
+          </div>
+		  
+        </div>
+		
+        <div class="button" (click)="saveTnxType()">
+          <input type="submit" name="submit" value="Save">
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!--end add-->
+
+
+
+<!--start update-->
+
+<div class="container" *ngIf="isUpdate">
+    <div class="title">TnxType</div>
+    <div class="content">
+      <form >
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details"> Name</span>
+           <input type="text" name="name"  [(ngModel)] = "tnxTypeUpdate.name">
+          </div>
+          <div class="input-box">
+            <span class="details">Txn Code</span>
+            <input type="text" name="txnCode"  [(ngModel)] = "tnxTypeUpdate.txnCode">
+          </div>
+		 
+          <div class="input-box" *ngIf="dataLedgerReceive && tnxTypeUpdate.fromType!=null && ledgers!=null ">
+            <span class="details">From Type</span>           
+			<select name="fromType" [(ngModel)]="tnxTypeUpdate.fromType.id">
+				<option *ngFor="let ledger of ledgers" value={{ledger.id}}>
+					{{ledger?.name}}
+				</option>
+				
+			</select>
+          </div>
+		  
+		  <div class="input-box" *ngIf= "dataLedgerReceive &&tnxTypeUpdate.toType!=null && ledgers!=null">
+            <span class="details">toType</span>            
+			<select name="toType" [(ngModel)]="tnxTypeUpdate.toType.id">
+				<option *ngFor="let ledger of ledgers" value={{ledger.id}}>
+					{{ledger?.name}}
+				</option>
+				
+			</select>
+          </div>
+		  
+		   <div class="inputfield terms" style="margin-top: 20px;">
+			  <label class="check">
+				<input type="checkbox" name="enable" [checked]="tnxTypeUpdate.enabled" (change)="tnxTypeUpdate.enabled = !tnxTypeUpdate.enabled" style="margin-left:25px; margin-top:5px;">
+			  </label>
+			<p style=" float:left; font-size:20px;" >Enable</p>
+          </div> 
+		  
+		 
+		  <div class="input-box">
+            <span class="details">Description</span>
+             <input type="text" name="description" [(ngModel)] = "tnxTypeUpdate.description" >
+          </div>
+		  
+        </div>
+		
+        <div class="button" (click)="finalUpdate()">
+          <input type="submit" name="submit" value="Update">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<!--end update-->
+
+
+
+<!--start table-->
+
+<table class="content-table" *ngIf="dataRecive" >
+
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>TxnCode</th>
+        <th>Description</th>
+        <th>FromType</th>
+        <th>ToType</th>
+        <th>Enabled</th>
+        <th>UPDATE</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor = "let item of tnxTypes" >
+
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.txnCode}}</td>       
+        <td>{{item.description}}</td>
+        <td>{{item.fromType?.name}}</td>
+        <td>{{item.toType?.name}}</td>
+        <td>{{item.enabled}}</td>
+        <td>
+            <button type="button"  (click) ="intialUpdateTnxType(item)" style=" padding: 5px;  background-color:#0099ff;">Update</button> 
+        </td>
+      
+    </tr>
+  </tbody>
+
+</table>  
+
+<!--end table -->
+
+

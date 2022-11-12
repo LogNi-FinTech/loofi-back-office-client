@@ -1,0 +1,131 @@
+<div fxLayout="column" fxLayoutAlign="start start" style="width: 100%;">
+	<div style="width: 100%;">
+		<h1 style="text-align: center; text-decoration: underline; font-size: 25px;">Income Statement</h1>
+	</div>
+
+	<mat-progress-bar *ngIf="isloding" mode="indeterminate"></mat-progress-bar>
+	<div style="width: 100%; margin: 20px;" fxLayout="column" fxLayoutAlign="start start">
+		<div style="width: 100%;" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+			<span fxFlex="40" style="font-weight: bold; font-size: 20px; line-height: 50px;">Date : &nbsp;</span>
+			<!-- <input type="text" [(ngModel)]="balance"> -->
+			<mat-form-field class="form-field" fxFlex="30" appearance="outline">
+				<mat-label>Date</mat-label>
+				<input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="balanceAt">
+				<mat-hint>MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<button fxFlex="20" (click)="getAllTypeSystem()" mat-button
+				class="button button-bg-color-yellow mt-3">Show</button>
+		</div>
+	</div>
+
+	<table class="content-table" *ngIf="isBalance">
+		<tr>
+			<td>
+				<h3 style="text-align:center; font-size: 18px;">INCOME</h3>
+				<table class="content-table">
+
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+
+							<th style="text-align:right">Balance</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngFor="let item of listIncome">
+							<td>{{item.ledgerCode}}</td>
+							<td>{{item.name}}</td>
+
+							<td style="text-align:right">{{item.balance}}.00</td>
+						</tr>
+
+					</tbody>
+					<!--
+							<tbody>
+								<tr>
+									<td></td>
+									<td style="text-align: right;">Total Balance : </td>									
+									<td style="text-align: right;">{{totaleIncomeBalance}}.00</td>
+								</tr>								
+							</tbody>
+							-->
+				</table>
+			</td>
+			<td>
+				<h3 style="text-align:center;  font-size: 18px;">EXPENSE</h3>
+				<table class="content-table">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+
+							<th style="text-align: right;">Balance</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngFor="let item of listExpense">
+							<td>{{item.ledgerCode}}</td>
+							<td>{{item.name}}</td>
+
+							<td style="text-align: right;">{{item.balance}}.00</td>
+						</tr>
+					</tbody>
+
+					<!--
+						<tbody>
+								<tr>
+									<td></td>
+									<td style="text-align: right;">Total Balance : </td>
+									
+									<td style="text-align: right;">{{totalExpenseBalance}}.00</td>
+								</tr>
+								
+							</tbody>
+							-->
+				</table>
+			</td>
+
+		</tr>
+
+	</table>
+
+
+	<!--table 2-->
+
+	<table class="content-table" *ngIf="isBalance">
+		<tr>
+			<td>
+				<table class="content-table">
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Balance : </td>
+							<td style="text-align: right;">{{totaleIncomeBalance}}.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<table class="content-table">
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Balance : </td>
+							<td style="text-align: right;">{{totalExpenseBalance}}.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</td>
+
+		</tr>
+
+	</table>
+</div>

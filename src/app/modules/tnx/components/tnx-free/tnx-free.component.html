@@ -1,0 +1,125 @@
+<div class="background-image">
+    <img src="assets/images/project-image/background-image.jpg">
+</div>
+
+<div class="container">
+
+    <div class="heading-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+            Tnx-Free List
+        </div>
+        <app-feature-guard [feature]="'create-mfs-ledger-transaction'">
+            <button (click)="openDialog(null)" class="project-button" mat-flat-button fxFlex="198px">
+                <mat-icon class="add-icon">add_circle</mat-icon> Tnx-Free </button>
+        </app-feature-guard>
+
+    </div>
+    
+
+    <mat-card>
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="payer">
+                    <th mat-header-cell *matHeaderCellDef> Payer </th>
+                    <td mat-cell *matCellDef="let element"> {{element.payer}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="receiver">
+                    <th mat-header-cell *matHeaderCellDef> Receiver </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.receiver}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="enabled">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Enabled </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.enabled}}
+                    </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="originalTxnType">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> OriginalTxnType </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.originalTxnType?.id}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="generatedTxnType">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> GeneratedTxnType </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.generatedTxnType?.id}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="chargeType">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> ChargeType </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.chargeType}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fixedAmount">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> FixedAmount </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.fixedAmount}}
+                    </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="percentage">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Percentage </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.percentage}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="channel">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Channel </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.channel}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="deductAmount">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> deductAmount </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.deductAmount}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="update">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Update </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <button (click)="openDialog(element)" class="button">Update</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-card>
+
+</div>

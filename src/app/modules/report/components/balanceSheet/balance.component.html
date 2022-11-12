@@ -1,0 +1,154 @@
+<div fxLayout="column" fxLayoutAlign="start start" style="width: 100%;">
+	<div style="width: 100%;">
+		<h1 style="text-align: center; text-decoration: underline; font-size: 25px;">Balance Sheet</h1>
+	</div>
+
+	<mat-progress-bar *ngIf="isLoding" mode="indeterminate"></mat-progress-bar>
+	<div style="width: 100%; margin: 20px;" fxLayout="column" fxLayoutAlign="start start">
+		<div style="width: 100%;" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+			<span fxFlex="40" style="font-weight: bold; font-size: 20px; line-height: 50px;">Date : &nbsp;</span>
+			<!-- <input type="text" [(ngModel)]="balance"> -->
+			<mat-form-field class="form-field" fxFlex="30" appearance="outline">
+				<mat-label>Date</mat-label>
+				<input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="balanceAt">
+				<mat-hint>MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<button fxFlex="20" (click)="getAllAsist()" mat-button
+				class="button button-bg-color-yellow mt-3">Show</button>
+		</div>
+	</div>
+
+	<!-- <input type="date" [(ngModel)]="balanceAt" style="margin-top:30px; margin-left: 30px;">
+<button type="submit" (click)="getAllAsist()">Show </button> -->
+
+
+	<!--start table-->
+	<h3 style="text-align: center;" *ngIf="isLoding">Loding...</h3>
+	<table class="content-table" *ngIf="isBalance">
+		<tr>
+			<td>
+				<h3 style="text-align:center;  font-size: 18px;">ASSET</h3>
+				<table class="content-table">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+
+							<th style="text-align: right;">Balance</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngFor="let item of listAsset">
+							<td>{{item.ledgerCode}}</td>
+							<td>{{item.name}}</td>
+							<td style="text-align: right;">{{item.balance}}.00</td>
+
+						</tr>
+					</tbody>
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Balance :</td>
+							<td style="text-align: right;"> {{totalAssetBalance}}.00</td>
+						</tr>
+
+					</tbody>
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Expense : </td>
+							<td style="text-align: right;">{{totaleExpenseBalance}}.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</td>
+
+
+			<td>
+				<h3 style="text-align:center;  font-size: 18px;">LIABILITY</h3>
+				<table class="content-table">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Name</th>
+
+							<th style="text-align: right;">Balance</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngFor="let item of lisLiability">
+							<td>{{item.ledgerCode}}</td>
+							<td>{{item.name}}</td>
+							<td style="text-align: right;">{{item.balance}}.00</td>
+
+						</tr>
+					</tbody>
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Balance :</td>
+							<td style="text-align: right;"> {{totalLiabitilyBalance}}.00</td>
+						</tr>
+
+					</tbody>
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Expense : </td>
+							<td style="text-align: right;">{{totaleIncomeBalance}}.00</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+			</td>
+
+		</tr>
+
+	</table>
+	<!--end table-->
+
+	<!--table 2-->
+
+	<table class="content-table" *ngIf="isBalance">
+
+		<tr>
+			<td>
+				<table class="content-table">
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Asset : </td>
+							<td style="text-align: right;">{{totalAsset}}.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</td>
+
+
+			<td>
+				<table class="content-table">
+
+					<tbody>
+						<tr>
+							<td></td>
+							<td style="text-align: right;">Total Laibitlity : </td>
+							<td style="text-align: right;">{{totalLiability}}.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>

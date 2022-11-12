@@ -1,0 +1,78 @@
+<div class="background-image">
+    <img src="assets/images/project-image/background-image.jpg">
+</div>
+
+<div class="container">
+
+    <div class="heading-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+            Ledger List
+        </div>
+        <app-feature-guard [feature]="'create-mfs-ledger-transaction'">
+            <button (click)="openDialog(null)" class="project-button" mat-flat-button fxFlex="198px">
+                <mat-icon class="add-icon">add_circle</mat-icon> Ledger </button>
+        </app-feature-guard>
+
+    </div>
+    
+
+    <mat-card>
+
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+        <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+                <ng-container matColumnDef="name">
+                    <th class="w-200" mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <th class="w-200" mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="head">
+                    <th mat-header-cell *matHeaderCellDef> Head </th>
+                    <td mat-cell *matCellDef="let element"> {{element.head}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ledgerCode">
+                    <th mat-header-cell *matHeaderCellDef> Ledger Code </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ledgerCode}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="onlyParent">
+                    <th mat-header-cell *matHeaderCellDef> Only Parent </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.onlyParent}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="showAccountsInChart">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Show Account </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        {{element.showAccountsInChart}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="update">
+                    <th class="align-center" mat-header-cell *matHeaderCellDef> Update </th>
+                    <td class="align-center" mat-cell *matCellDef="let element">
+                        <button (click)="openDialog(element)" class="button">Update</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </mat-card>
+
+</div>

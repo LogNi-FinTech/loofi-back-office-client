@@ -1,0 +1,96 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <h2 class="title">Add Tnx-free</h2>
+    <mat-icon class="close-icon" [mat-dialog-close]>close</mat-icon>
+</div>
+
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center center">
+
+    <form fxFlex="100" fxLayout="column" fxLayoutAlign="start start" [formGroup]="tnxFreeForm">
+        <div style="height: 180px; width: 100%;"> </div>
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input placeholder="name" matInput required formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Payer</mat-label>
+            <mat-select required formControlName="payer" name="payer">
+                <mat-option value="SYSTEM">SYSTEM</mat-option>
+                <mat-option value="SOURCE">SOURCE</mat-option>
+                <mat-option value="DESTINATION">DESTINATION</mat-option>
+                <mat-option value="FIXED_AC">FIXED_AC</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select required formControlName="type" name="type">
+                <mat-option value="FEE">FEE</mat-option>
+                <mat-option value="COMMISSION">COMMISSION</mat-option>
+                <mat-option value="VAT">VAT</mat-option>
+                <mat-option value="AIT">AIT</mat-option>
+                <mat-option value="OFFER">OFFER</mat-option>
+                <mat-option value="CASH_BACK">CASH_BACK</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Receiver</mat-label>
+            <mat-select required formControlName="receiver">
+                <mat-option value="SYSTEM">SYSTEM</mat-option>
+                <mat-option value="SOURCE">SOURCE</mat-option>
+                <mat-option value="DESTINATION">DESTINATION</mat-option>
+                <mat-option value="FIXED_AC">FIXED_AC</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Channel</mat-label>
+            <input placeholder="Channel" matInput required formControlName="channel">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="tnxTypes.length > 0" class="form-field"  appearance="outline">
+            <mat-label>Original Txn Type</mat-label>
+            <mat-select required formControlName="originalTxnType">
+                <mat-option *ngFor="let it of tnxTypes" value={{it.id}}>
+                    {{it.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="tnxTypes.length > 0" class="form-field"  appearance="outline">
+            <mat-label>Generated Txn Type</mat-label>
+            <mat-select required formControlName="generatedTxnType">
+                <mat-option *ngFor="let it of tnxTypes" value={{it.id}}>
+                    {{it.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Charge Type</mat-label>
+            <mat-select required formControlName="chargeType">
+                <mat-option value="FIXED">FIXED</mat-option>
+                <mat-option value="PERCENTAGE">PERCENTAGE</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div style="margin-bottom: 16px; width: 100%;" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-checkbox class="form-field" formControlName="deductAmount">Deduct Amount</mat-checkbox>
+            <mat-checkbox class="form-field" formControlName="enabled">Enabled</mat-checkbox>
+        </div>
+        <mat-form-field class="form-field"  appearance="outline">
+            <mat-label>Description</mat-label>
+            <input placeholder="Description" matInput required formControlName="description">
+        </mat-form-field>
+    </form>
+
+</mat-dialog-content>
+
+
+<mat-divider></mat-divider>
+<div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
+    <button class="button" mat-button mat-dialog-close>Cancel</button>
+    <button [disabled]="!tnxFreeForm.valid" (click)="submit()" mat-button
+        class="button button-bg-color-yellow">Submit</button>
+</div>
