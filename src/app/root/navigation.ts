@@ -134,4 +134,21 @@ export const navigationItem : FuseNavigationItem[]= [
             }
         ]
     },
+    {
+        icon: "heroicons_outline:chart-pie",
+        id: "Registration",
+        title: "Registration",
+        type: "collapsable",
+        feature: "registration",
+        children: [
+            {
+                icon: "currency_exchange",
+                id: "Registration-List",
+                link: "/registration/list",
+                title: "Registration",
+                type: "basic",
+                feature: "registration-list"
+            }
+        ]
+    },
 ];
