@@ -20,29 +20,7 @@
                 </mat-error>
             </div>
             <div fxFlex="8"> </div>
-    
-            <div class="field-name" fxFlex="14"> First Name </div>
-            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.firstName}}</span>
-            </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input placeholder="First Name" matInput formControlName="firstName">
-            </mat-form-field>
-        </div>
 
-        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-            <div class="field-name" fxFlex="16">Last Name </div>
-            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.lastName}}</span>
-            </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input placeholder="Last Name" matInput formControlName="lastName">
-            </mat-form-field>
-
-            <div fxFlex="8"> </div>
-    
             <div class="field-name" fxFlex="14"> Mobile No </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.mobileNo}}</span>
@@ -50,6 +28,28 @@
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Mobile No</mat-label>
                 <input placeholder="Mobile No" matInput formControlName="mobileNo">
+            </mat-form-field>
+        </div>
+
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">First Name </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.firstName}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input placeholder="First Name" matInput formControlName="firstName">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Last Name </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.lastName}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input placeholder="Last Name" matInput formControlName="lastName">
             </mat-form-field>
         </div>
 
