@@ -30,13 +30,13 @@ export class RegistrationModalComponent implements OnInit {
 
   initialIzeForm() {
     this.registrationForm = this.fb.group({
-      identifier: [''],
+      identifier: ['', Validators.required],
       firstName: [''],
       lastName : [''],
-      idNumber: ['87345689'],
+      idNumber: ['87345689', Validators.required],
       idType: ['NID'],
       customerId: [''],
-      mobileNo: ['5656556'],
+      mobileNo: ['5656556', Validators.required],
       email: ['test@gmail.com'],
       area: ['Khulna'],
       region: ['Khulna'],

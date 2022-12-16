@@ -14,7 +14,7 @@
             <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
                 <mat-form-field class="form-field" appearance="outline">
                     <mat-label>Identifier </mat-label>
-                    <input placeholder="Identifier" matInput formControlName="identifier">
+                    <input required placeholder="Identifier" matInput formControlName="identifier">
                 </mat-form-field>
                 <mat-error class="mat-error" *ngIf="registrationForm.get('identifier').hasError('uniqueValueError')"> Identifier already exist
                 </mat-error>
@@ -27,7 +27,7 @@
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Mobile No</mat-label>
-                <input placeholder="Mobile No" matInput formControlName="mobileNo">
+                <input required placeholder="Mobile No" matInput formControlName="mobileNo">
             </mat-form-field>
         </div>
 
@@ -60,7 +60,7 @@
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Id Number</mat-label>
-                <input placeholder="Id Number" matInput formControlName="idNumber">
+                <input required placeholder="Id Number" matInput formControlName="idNumber">
             </mat-form-field>
 
             <div fxFlex="8"> </div>
