@@ -22,10 +22,8 @@ export class RegistrationListComponent implements OnInit {
     private snakBarService: SnakBarService) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
     console.log('this.UserService.ge :>> ', this.userService.userId + " " + this.userService.userRole);
     this.fetchRegistrationList();
-
   }
 
   openDialog(registration?) {
@@ -39,11 +37,16 @@ export class RegistrationListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(modalRegistrationData => {
       debugger;
-      if (!registration) {
-        this.saveRegistration(modalRegistrationData);
-      }
-      else if(registration){
-        this.changeStatusRegistration(registration, modalRegistrationData);
+      if(modalRegistrationData){
+        if (!registration) {
+          this.saveRegistration(modalRegistrationData);
+        }
+        else if(registration){
+          this.changeStatusRegistration(registration, modalRegistrationData);
+        }
+        else {
+          this.isLoading = false;
+        }
       }
       else {
         this.isLoading = false;
@@ -52,6 +55,11 @@ export class RegistrationListComponent implements OnInit {
   }
 
   saveRegistration(modalRegistrationData){
+    modalRegistrationData = {
+      ...modalRegistrationData,
+      lastModifiedBy: this.userService.userId,
+      createdBy: this.userService.userId,
+    }
     this.registratioService.saveRegistration(modalRegistrationData).subscribe(async data => {
       this.fetchRegistrationList();
       this.snakBarService.showMessage("Successfully Saved");
@@ -80,6 +88,7 @@ export class RegistrationListComponent implements OnInit {
   }
 
   fetchRegistrationList() {
+    this.isLoading = true;
     this.registratioService.fetchRegistrationList().subscribe(data => {
       debugger;
       this.dataSource = data;

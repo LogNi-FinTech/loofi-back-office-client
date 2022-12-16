@@ -11,6 +11,8 @@ export class RegistratioService {
   private fetchRegistrationUrl = this.baseurl + "/registration";
   private saveRegistrationUrl = this.baseurl + "/registration";
   private changeStatusRegistrationUrl = this.baseurl + "/registration/update/status";
+  private saveBulkRegistrationUrl = this.baseurl + "/registration/bulk";
+  private checkUniqueidentifierUrl = this.baseurl + "/registration/identifier/";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -20,8 +22,18 @@ export class RegistratioService {
     });
   }
 
+  checkUniqueidentifier(identifier){
+    return this._httpClient.get<boolean>(this.checkUniqueidentifierUrl + identifier, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
+    });
+  }
+
   saveRegistration(transaction){
     return this._httpClient.post(this.saveRegistrationUrl, transaction);
+  }
+
+  saveBulkRegistration(transactionList){
+    return this._httpClient.post(this.saveBulkRegistrationUrl, transactionList);
   }
 
   changeStatusRegistration(transaction){

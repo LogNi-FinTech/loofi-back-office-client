@@ -135,19 +135,27 @@ export const navigationItem : FuseNavigationItem[]= [
         ]
     },
     {
-        icon: "heroicons_outline:chart-pie",
+        icon: "app_registration",
         id: "Registration",
         title: "Registration",
         type: "collapsable",
         feature: "registration",
         children: [
             {
-                icon: "currency_exchange",
+                icon: "how_to_reg",
                 id: "Registration-List",
                 link: "/registration/list",
                 title: "Registration",
                 type: "basic",
                 feature: "registration-list"
+            },
+            {
+                icon: "how_to_reg",
+                id: "bulk-registration",
+                link: "/registration/bulk",
+                title: "Bulk-Registration",
+                type: "basic",
+                feature: "bulk-registration"
             }
         ]
     },

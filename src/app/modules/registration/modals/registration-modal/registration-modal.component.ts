@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { debounceTime } from 'rxjs/operators';
+import { RegistratioService } from '../../services/registratio.service';
 
 @Component({
   selector: 'app-registration-modal',
@@ -12,28 +14,30 @@ export class RegistrationModalComponent implements OnInit {
   registrationForm: FormGroup;
   isCreateMode: boolean;
   registrationData: any;
+  idTypes: ['NID', 'PASSPORT', 'DRIVING_LICENCE', 'TRADE_LICENCE']
   constructor(
     public dialogRef: MatDialogRef<RegistrationModalComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private registratioService: RegistratioService) { }
 
   ngOnInit(): void {
     this.initialIzeForm();
+    this.checkUniqueidentifier();
     this.isCreateMode = this.data.registrationData == undefined;
     this.registrationData = this.data.registrationData;
-    console.log('data.registrationType :>> ', this.data.registrationData);
-    console.log('data.isCreateMode :>> ', this.isCreateMode);
   }
 
   initialIzeForm() {
     this.registrationForm = this.fb.group({
+      identifier: [''],
       firstName: [''],
       lastName : [''],
-      idNumber: [''],
+      idNumber: ['87345689'],
       idType: ['NID'],
       customerId: [''],
-      mobileNo: [''],
-      email: [''],
+      mobileNo: ['5656556'],
+      email: ['test@gmail.com'],
       area: ['Khulna'],
       region: ['Khulna'],
       territory: ['Khulna'],
@@ -57,6 +61,25 @@ export class RegistrationModalComponent implements OnInit {
       nomineeRelation: ['Khulna'],
       status: ['PENDING'],
     });
+  }
+
+  checkUniqueidentifier(){
+    this.registrationForm.get('identifier').valueChanges.pipe(debounceTime(800)).subscribe(
+      data => {
+        console.log('data :>> ', data);
+        if (data)
+          this.registratioService.checkUniqueidentifier(data).subscribe(isExist => {
+            console.log('isExist :>> ', isExist);
+            if(this.registrationForm.get('identifier').hasError('uniqueValueError')){
+              delete this.registrationForm.get('identifier').errors['uniqueValueError'];
+              this.registrationForm.get('identifier').updateValueAndValidity();
+            }
+            if(isExist){
+              this.registrationForm.get('identifier').setErrors({uniqueValueError: true});
+            }
+          });
+      }
+    )
   }
 
   submit() {

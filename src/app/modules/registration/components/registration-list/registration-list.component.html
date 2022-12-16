@@ -17,7 +17,7 @@
     
     <mat-card>
         <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-        <div>
+        <div class="table-container">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
 
                 <ng-container matColumnDef="firstName">
@@ -74,7 +74,7 @@
                     <td class="align-center w-30" mat-cell *matCellDef="let element">
                         <app-feature-guard [feature]="'approve-registration'">
                             <button *ngIf="element.status === 'PENDING'" (click)="openDialog(element)"
-                                class="button">Accept</button>
+                                class="button">Detail</button>
                             <button *ngIf="element.status === 'REJECTED'" disabled class="button">Rejected</button>
                             <button *ngIf="element.status === 'ACCEPTED'" disabled class="button">Accepted</button>
                         </app-feature-guard>

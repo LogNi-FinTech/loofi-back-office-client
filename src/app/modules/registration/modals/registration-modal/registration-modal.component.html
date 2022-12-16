@@ -6,9 +6,22 @@
 <mat-dialog-content fxLayout="row" fxLayoutAlign="center start">
 
     <form fxFlex="100" fxLayout="column" fxLayoutAlign="center start" [formGroup]="registrationForm">
-
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-            <div class="field-name" fxFlex="16">First Name </div>
+            <div class="field-name" fxFlex="16">Identifier</div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.identifier}}</span>
+            </div>
+            <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Identifier </mat-label>
+                    <input placeholder="Identifier" matInput formControlName="identifier">
+                </mat-form-field>
+                <mat-error class="mat-error" *ngIf="registrationForm.get('identifier').hasError('uniqueValueError')"> Identifier already exist
+                </mat-error>
+            </div>
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> First Name </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.firstName}}</span>
             </div>
@@ -16,16 +29,27 @@
                 <mat-label>First Name</mat-label>
                 <input placeholder="First Name" matInput formControlName="firstName">
             </mat-form-field>
+        </div>
 
-            <div fxFlex="8"> </div>
-    
-            <div class="field-name" fxFlex="14"> Last Name </div>
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16">Last Name </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.lastName}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Last Name</mat-label>
                 <input placeholder="Last Name" matInput formControlName="lastName">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> Mobile No </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.mobileNo}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Mobile No</mat-label>
+                <input placeholder="Mobile No" matInput formControlName="mobileNo">
             </mat-form-field>
         </div>
 
@@ -45,31 +69,15 @@
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.idType}}</span>
             </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+            <mat-form-field *ngIf="isCreateMode" class="form-field" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Id Type</mat-label>
-                <input placeholder="Id Type" matInput formControlName="idType">
-            </mat-form-field>
-        </div>
-
-        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
-            <div class="field-name" fxFlex="16"> Customer Id </div>
-            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.customerId}}</span>
-            </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Customer Id</mat-label>
-                <input placeholder="Customer Id" matInput formControlName="customerId">
-            </mat-form-field>
-
-            <div fxFlex="8"> </div>
-    
-            <div class="field-name" fxFlex="14"> Mobile No </div>
-            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.mobileNo}}</span>
-            </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Mobile No</mat-label>
-                <input placeholder="Mobile No" matInput formControlName="mobileNo">
+                <mat-select formControlName="idType" >
+                    <!-- <mat-option *ngFor="let value of idTypes" [value]="value">{{value}}</mat-option> -->
+                    <mat-option value="NID">{{'NID'}}</mat-option>
+                    <mat-option value="PASSPORT">{{'PASSPORT'}}</mat-option>
+                    <mat-option value="DRIVING_LICENCE">{{'DRIVING_LICENCE'}}</mat-option>
+                    <mat-option value="TRADE_LICENCE">{{'TRADE_LICENCE'}}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
@@ -117,6 +125,7 @@
             </mat-form-field>
         </div>
 
+        <h1 class="sub-heading">Present Address Information</h1>
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Present Address </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
@@ -183,6 +192,7 @@
             </mat-form-field>
         </div>
 
+        <h1 class="sub-heading">Permanent Address Information</h1>
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Permanent Address </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
@@ -249,6 +259,7 @@
             </mat-form-field>
         </div>
 
+        <h1 class="sub-heading">Nominee Information</h1>
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16">Nominee Name </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
@@ -287,9 +298,15 @@
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.nomineeIdType}}</span>
             </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+            <mat-form-field *ngIf="isCreateMode" class="form-field" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>NomineeId Type</mat-label>
-                <input placeholder="NomineeId Type" matInput formControlName="nomineeIdType">
+                <mat-select formControlName="nomineeIdType" >
+                    <!-- <mat-option *ngFor="let value of idTypes" [value]="value">{{value}}</mat-option> -->
+                    <mat-option value="NID">{{'NID'}}</mat-option>
+                    <mat-option value="PASSPORT">{{'PASSPORT'}}</mat-option>
+                    <mat-option value="DRIVING_LICENCE">{{'DRIVING_LICENCE'}}</mat-option>
+                    <mat-option value="TRADE_LICENCE">{{'TRADE_LICENCE'}}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
@@ -323,7 +340,7 @@
     <button class="button" mat-button [mat-dialog-close]>Cancel</button>
     <button *ngIf="isCreateMode" [disabled]="!registrationForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
     <div *ngIf="!isCreateMode">
-        <button (click)="changeStatus('ACCEPTED')" mat-button class="button button-bg-color-yellow">Accept</button>        
-        <button (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>
+        <button [disabled]="!registrationForm.valid" (click)="changeStatus('ACCEPTED')" mat-button class="button button-bg-color-yellow">Accept</button>        
+        <button [disabled]="!registrationForm.valid" (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>
     </div>
 </div>

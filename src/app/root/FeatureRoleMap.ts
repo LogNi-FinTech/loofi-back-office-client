@@ -49,7 +49,8 @@ export const featureRoleMap = [
             "registration-list",
             "registration-create",
             "status-registration",
-            "create-registration"
+            "create-registration",
+            "bulk-registration"
         ]
     }
 ]

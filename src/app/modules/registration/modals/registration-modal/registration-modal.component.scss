@@ -36,6 +36,11 @@
     color: black;
 }
 
+.mat-error{
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
 .button{
     height: 20px !important;
     width: 35px;
@@ -69,4 +74,12 @@
 
 .field-name-container {
     width: 100% !important;
+}
+
+.sub-heading{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.2px;
 }
