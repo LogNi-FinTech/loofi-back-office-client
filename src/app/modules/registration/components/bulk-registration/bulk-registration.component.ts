@@ -11,7 +11,7 @@ import * as XLSX from 'xlsx';
 })
 export class BulkRegistrationComponent implements OnInit {
 
-  public displayedColumns: string[] = ['firstName', 'lastName', 'email', 'mobileNo', 'idNumber', 'idType'];
+  public displayedColumns: string[] = ['identifier', 'firstName', 'lastName', 'mobileNo', 'idNumber', 'idType'];
   public dataSource;
   public isLoading = false;
 

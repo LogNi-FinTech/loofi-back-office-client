@@ -12,7 +12,7 @@ import { RegistratioService } from '../../services/registratio.service';
 })
 export class RegistrationListComponent implements OnInit {
 
-  public displayedColumns: string[] = ['firstName', 'idNumber', 'idType', 'mobileNo', 'email', 'status'];
+  public displayedColumns: string[] = ['identifier', 'firstName', 'idNumber', 'idType', 'mobileNo', 'status'];
   public dataSource;
   public isLoading = false;
 

@@ -24,6 +24,13 @@
             <ng-container *ngIf="dataSource">
                 <div class="table-container w-100" fxLayout="column" fxLayoutAlign="start start">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+                        <ng-container matColumnDef="identifier">
+                            <th mat-header-cell *matHeaderCellDef> Identifier </th>
+                            <td mat-cell *matCellDef="let element">   
+                                <span>{{element.identifier}}</span>
+                            </td>
+                        </ng-container>
             
                         <ng-container matColumnDef="firstName">
                             <th mat-header-cell *matHeaderCellDef> First Name </th>
@@ -38,14 +45,6 @@
                             <td mat-cell *matCellDef="let element">
                                 <span *ngIf="element.lastName != null">{{element.lastName}}</span>
                                 <span class="mr-40" *ngIf="element.lastName == null">{{'-'}}</span>
-                            </td>
-                        </ng-container>
-            
-                        <ng-container matColumnDef="email">
-                            <th class="align-center" mat-header-cell *matHeaderCellDef> email </th>
-                            <td class="align-center" mat-cell *matCellDef="let element">
-                                <span *ngIf="element.email != null">{{element.email}}</span>
-                                <span class="mr-40" *ngIf="element.email == null">{{'-'}}</span>
                             </td>
                         </ng-container>
             
