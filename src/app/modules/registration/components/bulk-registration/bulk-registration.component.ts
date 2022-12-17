@@ -20,18 +20,16 @@ export class BulkRegistrationComponent implements OnInit {
     private snakBarService: SnakBarService) { }
 
   ngOnInit(): void {
-    console.log('this.UserService.ge :>> ', this.userService.userId + " " + this.userService.userRole);
-    //this.testData();
   }
-
-  openDialog() { }
 
   srcResult;
   onFileSelected(event) {
     const target: DataTransfer = <DataTransfer>(event.target);
+    debugger;
     if (target.files.length !== 1) {
       throw new Error('Cannot use multiple files');
     }
+    this.isLoading = true;
     const reader: FileReader = new FileReader();
     reader.readAsBinaryString(target.files[0]);
     reader.onload = (e: any) => {
@@ -48,7 +46,7 @@ export class BulkRegistrationComponent implements OnInit {
      // Data will be logged in array format containing objects
       //this.getValueFromJsonObject(data);
       this.dataSource = data;
-      console.log('this.dataSource', this.dataSource);
+      this.isLoading = false;
     }
   }
 
@@ -78,30 +76,5 @@ export class BulkRegistrationComponent implements OnInit {
       error => {
         this.isLoading = false;
     });
-  }
-
-  testData(){
-    this.dataSource = [
-      {
-        email
-          :
-          "email@gmail.com",
-        firstName
-          :
-          "Dulce",
-        idNumber
-          :
-          '12352',
-        idType
-          :
-          "NID",
-        lastName
-          :
-          "lastName",
-        mobileNo
-          :
-          '1967856756'
-      }
-    ];
   }
 }
