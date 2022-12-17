@@ -48,6 +48,7 @@
         "rrule": "2.6.8",
         "rxjs": "6.6.7",
         "tslib": "2.3.1",
+        "uuid": "^9.0.0",
         "web-animations-js": "2.3.2",
         "xlsx": "^0.18.5",
         "zone.js": "0.11.4"

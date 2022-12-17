@@ -3,6 +3,7 @@ import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { UserService } from 'app/shared/service/user.service';
 import { RegistratioService } from '../../services/registratio.service';
 import * as XLSX from 'xlsx';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-bulk-registration',
@@ -14,6 +15,8 @@ export class BulkRegistrationComponent implements OnInit {
   public displayedColumns: string[] = ['identifier', 'firstName', 'lastName', 'mobileNo', 'idNumber', 'idType'];
   public dataSource;
   public isLoading = false;
+  private batchId;
+  private fileName;
 
   constructor(private registratioService: RegistratioService,
     private userService: UserService,
@@ -25,10 +28,12 @@ export class BulkRegistrationComponent implements OnInit {
   srcResult;
   onFileSelected(event) {
     const target: DataTransfer = <DataTransfer>(event.target);
+ 
     debugger;
     if (target.files.length !== 1) {
       throw new Error('Cannot use multiple files');
     }
+    this.fileName = target.files[0].name;
     this.isLoading = true;
     const reader: FileReader = new FileReader();
     reader.readAsBinaryString(target.files[0]);
@@ -59,11 +64,14 @@ export class BulkRegistrationComponent implements OnInit {
 
   saveBulkRegistration(){
     this.isLoading = true;
+    this.batchId = uuidv4();
     this.dataSource = this.dataSource.map(data=> {
       data = {
         ...data,
         lastModifiedBy: this.userService.userId,
         createdBy: this.userService.userId,
+        fileName: this.fileName,
+        batchId: this.batchId
       }
       return data;
     });
