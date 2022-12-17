@@ -86,26 +86,26 @@ export const navigationItem : FuseNavigationItem[]= [
     },
     {
         icon: "heroicons_outline:chart-pie",
-        id: "Tnx",
-        title: "Tnx",
+        id: "TxnType",
+        title: "TxnType",
         type: "collapsable",
-        feature: "tnx",
+        feature: "txnType",
         children: [
             {
                 icon: "currency_exchange",
-                id: "Tnx-Type",
-                link: "/tnx/type",
-                title: "Tnx Type",
+                id: "Txn-Type",
+                link: "/txn/type",
+                title: "Txn Type",
                 type: "basic",
-                feature: "tnx-type"
+                feature: "txnType-type"
             },
             {
                 icon: "currency_exchange",
-                id: "Tnx-Free",
-                link: "/tnx/free",
-                title: "Tnx Free",
+                id: "TxnType-Free",
+                link: "/txn/free",
+                title: "Txn Free",
                 type: "basic",
-                feature: "tnx-free"
+                feature: "txnType-free"
             }
         ]
     },

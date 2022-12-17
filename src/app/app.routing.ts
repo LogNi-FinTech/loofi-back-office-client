@@ -121,7 +121,7 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children   : [
-            {path: 'tnx', loadChildren: () => import('app/modules/tnx/tnx.module').then(m => m.TnxModule)},
+            {path: 'txn', loadChildren: () => import('app/modules/tnx/tnx.module').then(m => m.TnxModule)},
         ]
     },
     {
