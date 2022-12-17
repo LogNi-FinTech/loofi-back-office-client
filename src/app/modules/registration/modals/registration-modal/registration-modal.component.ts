@@ -77,6 +77,8 @@ export class RegistrationModalComponent implements OnInit {
             if(isExist){
               this.registrationForm.get('identifier').setErrors({uniqueValueError: true});
             }
+          }, error => {
+           // console.log('error :>> ', error);
           });
       }
     )

@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { accountServiceBaseUrl } from '../../../shared/constant/baseUrl'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class RegistratioService {
   private saveRegistrationUrl = this.baseurl + "/registration";
   private changeStatusRegistrationUrl = this.baseurl + "/registration/update/status";
   private saveBulkRegistrationUrl = this.baseurl + "/registration/bulk";
-  private checkUniqueidentifierUrl = this.baseurl + "/registration/identifier/";
+  private checkUniqueidentifierUrl = accountServiceBaseUrl + "/api/v1/account/";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -25,7 +27,9 @@ export class RegistratioService {
   checkUniqueidentifier(identifier){
     return this._httpClient.get<boolean>(this.checkUniqueidentifierUrl + identifier, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
-    });
+    }).pipe(catchError(err => {
+      return throwError(err);
+    }));
   }
 
   saveRegistration(transaction){
