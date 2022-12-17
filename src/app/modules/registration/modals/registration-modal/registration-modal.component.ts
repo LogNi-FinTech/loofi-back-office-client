@@ -60,6 +60,7 @@ export class RegistrationModalComponent implements OnInit {
       nomineeAddress: ['Khulna'],
       nomineeRelation: ['Khulna'],
       status: ['PENDING'],
+      alternativeAccountNumber: ["000000"]
     });
   }
 

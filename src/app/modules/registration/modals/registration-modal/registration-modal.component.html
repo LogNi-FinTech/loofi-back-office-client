@@ -125,6 +125,24 @@
             </mat-form-field>
         </div>
 
+        <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+            <div class="field-name" fxFlex="16"> Alternative Account Number </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{registrationData.alternativeAccountNumber}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Alternative Account Number</mat-label>
+                <input placeholder="Alternative Account Number" matInput formControlName="alternativeAccountNumber">
+            </mat-form-field>
+
+            <div fxFlex="8"> </div>
+    
+            <div class="field-name" fxFlex="14"> </div>
+            <div class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100"></span>
+            </div>
+        </div>
+
         <h1 class="sub-heading">Present Address Information</h1>
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Present Address </div>
