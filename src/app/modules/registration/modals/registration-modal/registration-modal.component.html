@@ -115,13 +115,13 @@
 
             <div fxFlex="8"> </div>
     
-            <div class="field-name" fxFlex="14"> territory </div>
+            <div class="field-name" fxFlex="14"> Territory </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.territory}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Territory</mat-label>
-                <input placeholder="Rerritory" matInput formControlName="territory">
+                <input placeholder="Territory" matInput formControlName="territory">
             </mat-form-field>
         </div>
 
