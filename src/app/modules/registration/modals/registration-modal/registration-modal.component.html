@@ -340,7 +340,7 @@
     <button class="button" mat-button [mat-dialog-close]>Cancel</button>
     <button *ngIf="isCreateMode" [disabled]="!registrationForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
     <div *ngIf="!isCreateMode">
-        <button [disabled]="!registrationForm.valid" (click)="changeStatus('ACCEPTED')" mat-button class="button button-bg-color-yellow">Accept</button>        
-        <button [disabled]="!registrationForm.valid" (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>
+        <button (click)="changeStatus('APPROVED')" mat-button class="button button-bg-color-yellow">Approve</button>        
+        <button (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>
     </div>
 </div>

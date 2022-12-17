@@ -53,14 +53,6 @@
                     </td>
                 </ng-container>
 
-                <!-- <ng-container matColumnDef="lastModifiedDate">
-                    <th class="align-center" mat-header-cell *matHeaderCellDef> Approved Time </th>
-                    <td class="align-center" mat-cell *matCellDef="let element"> 
-                        <span *ngIf="element.txnId != null">{{element.lastModifiedDate | date:'short'}}</span>
-                        <span *ngIf="element.txnId == null">{{'-'}}</span>
-                    </td>
-                </ng-container> -->
-
                 <ng-container matColumnDef="email">
                     <th class="align-center" mat-header-cell *matHeaderCellDef> email </th>
                     <td class="align-center"  mat-cell *matCellDef="let element"> 
@@ -76,7 +68,7 @@
                             <button *ngIf="element.status === 'PENDING'" (click)="openDialog(element)"
                                 class="button">Detail</button>
                             <button *ngIf="element.status === 'REJECTED'" disabled class="button">Rejected</button>
-                            <button *ngIf="element.status === 'ACCEPTED'" disabled class="button">Accepted</button>
+                            <button *ngIf="element.status === 'APPROVED'" disabled class="button">Approved</button>
                         </app-feature-guard>
                     <app-feature-guard [feature]="'status-registration'">
                        <span style="text-transform: capitalize;">{{element.status}}</span>
