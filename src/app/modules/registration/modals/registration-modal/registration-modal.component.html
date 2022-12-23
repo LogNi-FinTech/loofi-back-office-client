@@ -58,10 +58,14 @@
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
                 <span fxFlex="100">{{registrationData.idNumber}}</span>
             </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Id Number</mat-label>
-                <input required placeholder="Id Number" matInput formControlName="idNumber">
-            </mat-form-field>
+            <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Id Number </mat-label>
+                    <input required placeholder="Id Number" matInput formControlName="idNumber">
+                </mat-form-field>
+                <span class="mat-error color-red" *ngIf="isIdNumberExist"> Id Number already exist
+                </span>
+            </div>
 
             <div fxFlex="8"> </div>
     
