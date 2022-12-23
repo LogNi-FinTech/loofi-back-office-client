@@ -159,4 +159,21 @@ export const navigationItem : FuseNavigationItem[]= [
             }
         ]
     },
+    {
+        icon: "app_registration",
+        id: "Credit",
+        title: "Credit",
+        type: "collapsable",
+        feature: "credit",
+        children: [
+            {
+                icon: "how_to_reg",
+                id: "Loan-Product-List",
+                link: "/credit/loan-product-list",
+                title: "Loan-Product-List",
+                type: "basic",
+                feature: "loan-product-list"
+            }
+        ]
+    },
 ];

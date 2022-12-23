@@ -147,5 +147,17 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'registration', loadChildren: () => import('app/modules/registration/registration.module').then(m => m.RegistrationModule)},
         ]
+    },
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'credit', loadChildren: () => import('app/modules/credit/credit.module').then(m => m.CreditModule)},
+        ]
     }
 ];
