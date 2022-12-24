@@ -20,8 +20,8 @@ export class LoanProductService {
     });
   }
 
-  saveLoanProduct(transaction){
-    return this._httpClient.post(this.saveLoanProductUrl, transaction);
+  saveLoanProduct(loanProduct){
+    return this._httpClient.post(this.saveLoanProductUrl, loanProduct);
   }
 
   deleteLoanProduct(loanProductId){

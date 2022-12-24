@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { UserService } from 'app/shared/service/user.service';
+import { ConfirmDeleteComponent } from '../../modals/confirm-delete/confirm-delete.component';
 import { CreateLoanProductComponent } from '../../modals/create-loan-product/create-loan-product.component';
 import { LoanProductService } from '../../services/loan-product.service';
 
@@ -12,7 +13,7 @@ import { LoanProductService } from '../../services/loan-product.service';
 })
 export class LoanProductComponent implements OnInit {
 
-  public displayedColumns: string[] = ['name', 'interestRate', 'loanFee', 'maxAmount', 'minAmount', 'minPeriod', 'maxPeriod'];
+  public displayedColumns: string[] = ['name', 'interestRate', 'loanFee', 'maxAmount', 'minAmount', 'minPeriod', 'maxPeriod', 'delete'];
   public dataSource;
   public isLoading = false;
 
@@ -51,12 +52,25 @@ export class LoanProductComponent implements OnInit {
     });
   }
 
+  deleteModelOpen(data){
+    this.isLoading = true;
+    let dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '300px',
+      panelClass: 'app-full-bleed-dialog',
+    });
+    dialogRef.afterClosed().subscribe(modalLoanProductData => {
+      debugger;
+      if(modalLoanProductData){
+        console.log('data :>> ', data);
+       // this.saveLoanProduct(modalLoanProductData);
+      }
+      else {
+        this.isLoading = false;
+      }
+    });
+  }
+
   saveLoanProduct(modalLoanProductData){
-    modalLoanProductData = {
-      ...modalLoanProductData,
-      lastModifiedBy: this.userService.userId,
-      createdBy: this.userService.userId,
-    }
     this.loanProductService.saveLoanProduct(modalLoanProductData).subscribe(async data => {
       this.fetchLoanProductList();
       this.snakBarService.showMessage("Successfully Saved");

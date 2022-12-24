@@ -53,7 +53,7 @@ export const featureRoleMap = [
             "status-registration",
             "create-registration",
             "bulk-registration",
-            "creadit",
+            "credit",
             "loan-product-list",
             "create-loan-product"
         ]
