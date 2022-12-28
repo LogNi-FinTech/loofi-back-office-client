@@ -25,7 +25,7 @@ export class LoanProductService {
   }
 
   deleteLoanProduct(loanProductId){
-    return this._httpClient.delete(this.deleteLoanProductUrl+loanProductId);
+    return this._httpClient.delete(this.deleteLoanProductUrl+loanProductId, {responseType: 'text'});
   }
 
   // changeStatusLoanProduct(transaction){

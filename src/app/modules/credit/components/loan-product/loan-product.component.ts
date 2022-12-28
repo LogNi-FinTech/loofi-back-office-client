@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SnakBarService } from 'app/shared/service/snak-bar.service';
 import { UserService } from 'app/shared/service/user.service';
-import { ConfirmDeleteComponent } from '../../modals/confirm-delete/confirm-delete.component';
+import { ConfirmDeleteComponent } from '../../../../shared/modals/confirm-delete/confirm-delete.component';
 import { CreateLoanProductComponent } from '../../modals/create-loan-product/create-loan-product.component';
 import { LoanProductService } from '../../services/loan-product.service';
 
@@ -52,7 +52,7 @@ export class LoanProductComponent implements OnInit {
     });
   }
 
-  deleteModelOpen(data){
+  deleteModelOpen(loanProductId){
     this.isLoading = true;
     let dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '300px',
@@ -61,13 +61,26 @@ export class LoanProductComponent implements OnInit {
     dialogRef.afterClosed().subscribe(modalLoanProductData => {
       debugger;
       if(modalLoanProductData){
-        console.log('data :>> ', data);
-       // this.saveLoanProduct(modalLoanProductData);
+        console.log('data :>> ', loanProductId);
+        this.deleteLoanProduct(loanProductId);
       }
       else {
         this.isLoading = false;
       }
     });
+  }
+
+  deleteLoanProduct(loanProductId){
+    this.loanProductService.deleteLoanProduct(loanProductId).subscribe(data => {
+      debugger;
+      this.fetchLoanProductList();
+      this.snakBarService.showMessage("Successfully Deleted");
+    },
+      error => {
+        debugger;
+        this.isLoading = false;
+        this.snakBarService.showMessage("An error has occured");
+      });
   }
 
   saveLoanProduct(modalLoanProductData){

@@ -78,7 +78,7 @@
                 <ng-container matColumnDef="delete">
                     <th class="align-right" mat-header-cell *matHeaderCellDef> Delete </th>
                     <td class="align-right" mat-cell *matCellDef="let element">   
-                        <mat-icon class="coursor-pointer" (click)="deleteModelOpen(element)">delete</mat-icon>
+                        <mat-icon class="coursor-pointer" (click)="deleteModelOpen(element.id)">delete</mat-icon>
                     </td>
                 </ng-container>
 

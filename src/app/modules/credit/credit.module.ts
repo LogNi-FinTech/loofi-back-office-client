@@ -4,7 +4,7 @@ import { LoanProductComponent } from './components/loan-product/loan-product.com
 import { CreateLoanProductComponent } from './modals/create-loan-product/create-loan-product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
-import { ConfirmDeleteComponent } from './modals/confirm-delete/confirm-delete.component';
+import { ConfirmDeleteComponent } from '../../shared/modals/confirm-delete/confirm-delete.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: "loan-product-list" },
