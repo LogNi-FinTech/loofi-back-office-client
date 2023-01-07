@@ -5,10 +5,13 @@ import { CreateLoanProductComponent } from './modals/create-loan-product/create-
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { ConfirmDeleteComponent } from '../../shared/modals/confirm-delete/confirm-delete.component';
+import { LoanApplicationComponent } from './components/loan-application/loan-application.component';
+import { CreateLoanApplicationComponent } from './modals/create-loan-application/create-loan-application.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: "loan-product-list" },
-  { path: 'loan-product-list', pathMatch: 'full', component: LoanProductComponent }
+  { path: 'loan-products', pathMatch: 'full', component: LoanProductComponent },
+  { path: 'loan-applications', pathMatch: 'full', component: LoanApplicationComponent }
 ];
 
 
@@ -16,13 +19,15 @@ const routes: Routes = [
   declarations: [
     LoanProductComponent,
     CreateLoanProductComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    LoanApplicationComponent,
+    CreateLoanApplicationComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule
   ],
-  entryComponents: [CreateLoanProductComponent, ConfirmDeleteComponent]
+  entryComponents: [CreateLoanProductComponent, ConfirmDeleteComponent, CreateLoanApplicationComponent]
 })
 export class CreditModule { }

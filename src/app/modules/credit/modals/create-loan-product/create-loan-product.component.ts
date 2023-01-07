@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -30,18 +30,25 @@ export class CreateLoanProductComponent implements OnInit {
       name: ['loan 1'],
       interestRate: ['5'],
       loanFee : ['5'],
+      loanFeeType : ['Percentage'],
       defaultPeriod: ['87345689'],
       maxAmount: ['150000'],
       minAmount: ['100'],
       maxPeriod: ['5'],
       minPeriod: ['1'],
       penaltyRate: ['100'],
-      description: ['Khulna']
+      description: ['Khulna'],
+      approvalLevel: ['', Validators.max(4)]
     });
   }
 
   submit() {
-    this.closeModal(this.loanProductForm.value);
+    if (this.loanProductForm.valid) {
+      this.closeModal(this.loanProductForm.value);
+    }
+    else {
+      this.loanProductForm.markAllAsTouched();
+    }
   }
 
   changeStatus(status){

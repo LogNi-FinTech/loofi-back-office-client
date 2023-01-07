@@ -9,7 +9,7 @@
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16">Name</div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.name}}</span>
+                <span fxFlex="100">{{loanProductForm.name}}</span>
             </div>
             <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
                 <mat-form-field class="form-field" appearance="outline">
@@ -19,20 +19,21 @@
             </div>
             <div fxFlex="8"> </div>
 
-            <div class="field-name" fxFlex="14"> InterestRate </div>
+            <div class="field-name" fxFlex="14"> Interest Rate </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.interestRate}}</span>
+                <span fxFlex="100">{{loanProductForm.interestRate}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>InterestRate</mat-label>
-                <input required placeholder="InterestRate" matInput formControlName="interestRate" type="number">
+                <mat-label>Interest Rate</mat-label>
+                <input required placeholder="Interest Rate" matInput formControlName="interestRate" type="number">
+                <mat-icon matSuffix>percent</mat-icon>
             </mat-form-field>
         </div>
 
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16">Loan Fee </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.loanFee}}</span>
+                <span fxFlex="100">{{loanProductForm.loanFee}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Loan Fee</mat-label>
@@ -41,20 +42,23 @@
 
             <div fxFlex="8"> </div>
     
-            <div class="field-name" fxFlex="14"> Default Period </div>
+            <div class="field-name" fxFlex="14"> Loan Fee Type </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.defaultPeriod}}</span>
+                <span fxFlex="100">{{loanProductForm.loanFeeType}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Default Period</mat-label>
-                <input placeholder="Default Period" matInput formControlName="defaultPeriod" type="number">
+                <mat-label>Loan Fee Type</mat-label>
+                <mat-select formControlName="loanFeeType" >
+                    <mat-option value="AMOUNT">{{'Amount'}}</mat-option>
+                    <mat-option value="PERCENTAGE">{{'Percentage'}}</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16">Max Amount</div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.maxAmount}}</span>
+                <span fxFlex="100">{{loanProductForm.maxAmount}}</span>
             </div>
             <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
                 <mat-form-field class="form-field" appearance="outline">
@@ -67,7 +71,7 @@
     
             <div class="field-name" fxFlex="14"> Min Amount </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.minAmount}}</span>
+                <span fxFlex="100">{{loanProductForm.minAmount}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Min Amount</mat-label>
@@ -78,7 +82,7 @@
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Max Period </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.maxPeriod}}</span>
+                <span fxFlex="100">{{loanProductForm.maxPeriod}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Max Period</mat-label>
@@ -89,7 +93,7 @@
     
             <div class="field-name" fxFlex="14"> Min Period </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.minPeriod}}</span>
+                <span fxFlex="100">{{loanProductForm.minPeriod}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Min Period</mat-label>
@@ -100,7 +104,7 @@
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Penalty Rate </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.penaltyRate}}</span>
+                <span fxFlex="100">{{loanProductForm.penaltyRate}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
                 <mat-label>Penalty Rate</mat-label>
@@ -111,24 +115,37 @@
     
             <div class="field-name" fxFlex="14"> Approval Level </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.approvalLevel}}</span>
+                <span fxFlex="100">{{loanProductForm.approvalLevel}}</span>
             </div>
-            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
-                <mat-label>Approval Level</mat-label>
-                <input placeholder="Approval Level" matInput formControlName="approvalLevel" type="number">
-            </mat-form-field>
+            <div *ngIf="isCreateMode" fxFlex="32" fxLayout="column" fxLayoutAlign="start start">
+                <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                    <mat-label>Approval Level</mat-label>
+                    <input placeholder="Approval Level" matInput formControlName="approvalLevel" type="number">
+                </mat-form-field>
+                <mat-error class="mat-error" *ngIf="loanProductForm.get('approvalLevel').hasError('max')"> Approval Level should be less than 4.
+                </mat-error>
+            </div>
         </div>
 
         <div class="field-name-container" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
             <div class="field-name" fxFlex="16"> Description </div>
             <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
-                <span fxFlex="100">{{registrationData.description}}</span>
+                <span fxFlex="100">{{loanProductForm.description}}</span>
             </div>
             <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="31" appearance="outline">
                 <mat-label>Description</mat-label>
                 <textarea style="height: 70px;" placeholder="Description" matInput formControlName="description"></textarea>
             </mat-form-field>
-            <div  fxFlex="53">  </div>
+            <div  fxFlex="8">  </div>
+
+            <div class="field-name" fxFlex="14"> Default Period(day) </div>
+            <div *ngIf="!isCreateMode" class="field-value" fxFlex="31" fxLayout="row" fxLayoutAlign="start start"> 
+                <span fxFlex="100">{{loanProductForm.defaultPeriod}}</span>
+            </div>
+            <mat-form-field *ngIf="isCreateMode" class="form-field" fxFlex="32" appearance="outline">
+                <mat-label>Default Period</mat-label>
+                <input placeholder="Default Period" matInput formControlName="defaultPeriod" type="number">
+            </mat-form-field>
         </div>
     </form>
 
@@ -137,7 +154,7 @@
 <mat-divider></mat-divider>
 <div class="footer" fxLayout="row" fxLayoutAlign="space-between center">
     <button class="button" mat-button [mat-dialog-close]>Cancel</button>
-    <button *ngIf="isCreateMode" [disabled]="!loanProductForm.valid" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
+    <button *ngIf="isCreateMode" (click)="submit()" mat-button class="button button-bg-color-yellow">Submit</button>
     <div *ngIf="!isCreateMode">
         <button (click)="changeStatus('APPROVED')" mat-button class="button button-bg-color-yellow">Approve</button>        
         <button (click)="changeStatus('REJECTED')" mat-button class="button button-bg-color-yellow">Reject</button>

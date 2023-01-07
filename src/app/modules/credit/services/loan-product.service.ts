@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { creditServiceBaseUrl } from 'app/shared/constant/baseUrl';
+import { creditServiceBaseUrl, kycServiceBaseUrl } from 'app/shared/constant/baseUrl';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,8 @@ export class LoanProductService {
   private fetchLoanProductUrl = creditServiceBaseUrl + "api/product";
   private saveLoanProductUrl =  creditServiceBaseUrl + "api/product";
   private deleteLoanProductUrl =  creditServiceBaseUrl + "api/product/";
+  private fetchCustomerByIdUrl =  kycServiceBaseUrl + "api/customerkyc/id/";
+  private fetchCustomerByMobileUrl =  kycServiceBaseUrl + "api/customerkyc/mobile/";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -26,6 +28,18 @@ export class LoanProductService {
 
   deleteLoanProduct(loanProductId){
     return this._httpClient.delete(this.deleteLoanProductUrl+loanProductId, {responseType: 'text'});
+  }
+
+  fetchCustomerById(customerId){
+    return this._httpClient.get<any[]>(this.fetchCustomerByIdUrl + customerId, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
+    });
+  }
+
+  fetchCustomerByMobile(mobileNo){
+    return this._httpClient.get<any[]>(this.fetchCustomerByMobileUrl + mobileNo, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', }),
+    });
   }
 
   // changeStatusLoanProduct(transaction){

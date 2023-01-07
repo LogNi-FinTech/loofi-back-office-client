@@ -23,6 +23,7 @@ export const featureRoleMap = [
             "approve-registration",
             "credit",
             "loan-product-list",
+            "loan-applications"
         ]
     },
     {
@@ -55,7 +56,9 @@ export const featureRoleMap = [
             "bulk-registration",
             "credit",
             "loan-product-list",
-            "create-loan-product"
+            "create-loan-product",
+            "loan-applications",
+            "create-loan-applications"
         ]
     }
 ]

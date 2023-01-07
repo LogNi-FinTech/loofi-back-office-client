@@ -160,19 +160,27 @@ export const navigationItem : FuseNavigationItem[]= [
         ]
     },
     {
-        icon: "app_registration",
+        icon: "credit_card",
         id: "Credit",
         title: "Credit",
         type: "collapsable",
         feature: "credit",
         children: [
             {
-                icon: "how_to_reg",
+                icon: "real_estate_agent",
                 id: "Loan-Product-List",
-                link: "/credit/loan-product-list",
+                link: "/credit/loan-products",
                 title: "Loan-Product-List",
                 type: "basic",
                 feature: "loan-product-list"
+            },
+            {
+                icon: "real_estate_agent",
+                id: "Loan-Applications",
+                link: "/credit/loan-applications",
+                title: "Loan-Applications",
+                type: "basic",
+                feature: "loan-applications"
             }
         ]
     },
