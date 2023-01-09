@@ -10,9 +10,9 @@ import { MfsLedgerTransaction } from '../model/MfsLedgerTransaction';
 export class TransactionService {
 
   private baseurl = "http://localhost:8080/api";
-  private fetchMfsTransactionUrl = this.baseurl + "/mfs-ledger-transaction/maker";
-  private saveMfsTransaction = this.baseurl + "/mfs-ledger-transaction/maker";
-  private changeStatusMfsLedgerTransactionUrl = this.baseurl + "/mfs-ledger-transaction/checker/change-status";
+  private fetchMfsTransactionUrl = this.baseurl + "/ledger-transaction";
+  private saveMfsTransaction = this.baseurl + "/ledger-transaction";
+  private changeStatusMfsLedgerTransactionUrl = this.baseurl + "/ledger-transaction/checker/change-status";
 
   constructor(private _httpClient: HttpClient) { }
 

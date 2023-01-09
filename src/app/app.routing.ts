@@ -121,7 +121,7 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver,
         },
         children   : [
-            {path: 'tnx', loadChildren: () => import('app/modules/tnx/tnx.module').then(m => m.TnxModule)},
+            {path: 'txn', loadChildren: () => import('app/modules/tnx/tnx.module').then(m => m.TnxModule)},
         ]
     },
     {
@@ -134,6 +134,18 @@ export const appRoutes: Route[] = [
         },
         children   : [
             {path: 'report', loadChildren: () => import('app/modules/report/report.module').then(m => m.ReportModule)},
+        ]
+    },
+    {
+        path       : '',
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children   : [
+            {path: 'registration', loadChildren: () => import('app/modules/registration/registration.module').then(m => m.RegistrationModule)},
         ]
     }
 ];

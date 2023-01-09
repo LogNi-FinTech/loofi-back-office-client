@@ -12,12 +12,15 @@ export const featureRoleMap = [
             "account-detail",
             "account-create",
             "ledger",
-            "tnx",
-            "tnx-free",
-            "tnx-type",
+            "txnType",
+            "txnType-free",
+            "txnType-type",
             "report",
             "income-statement",
-            "balance-sheet"
+            "balance-sheet",
+            "registration",
+            "registration-list",
+            "approve-registration"
         ]
     },
     {
@@ -36,12 +39,18 @@ export const featureRoleMap = [
             "account-detail",
             "account-create",
             "ledger",
-            "tnx",
-            "tnx-free",
-            "tnx-type",
+            "txnType",
+            "txnType-free",
+            "txnType-type",
             "report",
             "income-statement",
-            "balance-sheet"
+            "balance-sheet",
+            "registration",
+            "registration-list",
+            "registration-create",
+            "status-registration",
+            "create-registration",
+            "bulk-registration"
         ]
     }
 ]
